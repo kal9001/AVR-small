@@ -41,10 +41,9 @@
 #include <util/delay.h>
 
 int main(void)
-{
-   //		     	      PB0   PB1   PB2   PB3   PB4
-   int pinOn[] =  { 250,   75, 1000,  100,   50};
-   int pinOff[] = { 250,   75,  100, 1111,  500};
+{                //_PB0, _PB1, _PB2, _PB3, _PB4
+   int pinOn[] =  { 250,   75, 1000,  100,   50}; // Select each pins 'on' time in miliseconds.
+   int pinOff[] = { 250,   75,  100, 1111,  500}; // Select each pins 'off' time in miliseconds.
    int pinState[] = {0, 0, 0, 0, 0};
    int pinTime[] = {0, 0, 0, 0, 0};
    int i = 0;
