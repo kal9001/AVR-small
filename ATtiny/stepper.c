@@ -27,12 +27,12 @@
  *                       ATtiny84A
  *                       ╔═══╦═══╗
  *               5v VCC -║1    14║- VCC 5V5
- *     Motor enable PB0 -║2    13║- 
- *                  PB1 -║3    12║- PA1 (o)
- *                RESET -║4    11║- PA2 (o)
- *              (o) PB2 -║5    10║- PA3 (o)
- *               A1 PA7 -║6     9║- PA4 B1
- *               A2 PA6 -║7     8║- PA5 B2
+ *  Motor enable (O)PB0 -║2    13║- PA0(I) Step forward
+ *                  PB1 -║3    12║- PA1(I) Step backward
+ *                RESET -║4    11║- PA2(I) Step clock
+ *                  PB2 -║5    10║- PA3
+ *       Coil 2A (O)PA7 -║6     9║- PA4(O) Coil 1A
+ *       Coil 2B (O)PA6 -║7     8║- PA5(O) Coil 1B
  *                       ╚═══════╝
  *
 \*/
@@ -41,8 +41,25 @@
 
 #include <avr/io.h>
 
-int main(void)
+void singleStep(byte direction, byte stepPosition);
+void halfStep(byte direction, byte stepPosition);
+
+
+void main(void)
+{
+   byte stepPosition;//the step that was made last.
+   byte direction;//which way are we going.
+
+
+}
+
+void singleStep(byte direction, byte stepPosition)
 {
 
-return 0;
-} 
+return;
+}
+void halfStep(byte direction, byte stepPosition)
+{
+
+return;
+}
