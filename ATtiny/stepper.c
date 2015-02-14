@@ -28,38 +28,128 @@
  *                       ╔═══╦═══╗
  *               5v VCC -║1    14║- VCC 5V5
  *  Motor enable (O)PB0 -║2    13║- PA0(I) Step forward
- *                  PB1 -║3    12║- PA1(I) Step backward
+ *        Unused (X)PB1 -║3    12║- PA1(I) Step backward
  *                RESET -║4    11║- PA2(I) Step clock
- *                  PB2 -║5    10║- PA3
+ *        Unused (X)PB2 -║5    10║- PA3(X) Unused
  *       Coil 2A (O)PA7 -║6     9║- PA4(O) Coil 1A
  *       Coil 2B (O)PA6 -║7     8║- PA5(O) Coil 1B
  *                       ╚═══════╝
  *
 \*/
  
-#define F_CPU _000000
+#define F_CPU 8000000
 
 #include <avr/io.h>
 
-void singleStep(byte direction, byte stepPosition);
-void halfStep(byte direction, byte stepPosition);
+void singleStep(uint8_t *direction, uint8_t *stepPosition);
+void halfStep(uint8_t *direction, uint8_t *stepPosition);
+void getDirection(uint8_t *direction);
 
 
-void main(void)
+int main(void)
 {
-   byte stepPosition;//the step that was made last.
-   byte direction;//which way are we going.
-
+   uint8_t stepPosition = 0x00;//the step that was made last.
+   //stepPosition holds the current step phases for the motor
+   //       full steps    half steps
+   //      1122
+   //      ABAB
+   // 0000 1000 = 0x08 - Full
+   // 0000 1100 = 0x0c - Half
+   // 0000 0100 = 0x04 - Full
+   // 0000 0110 = 0x06 - Half
+   // 0000 0010 = 0x02 - Full
+   // 0000 0011 = 0x03 - Half
+   // 0000 0001 = 0x01 - Full
+   // 0000 1001 = 0x09 - Half
+   
+   uint8_t direction = 0x03;//which way are we going.
+   //0x00 = free running
+   //0x01 = forwards
+   //0x02 = backwards
+   //0x03 = brake
+      
+   singleStep(&direction, &stepPosition);
 
 }
 
-void singleStep(byte direction, byte stepPosition)
+void singleStep(uint8_t *direction, uint8_t *stepPosition)
 {
-
+   getDirection(direction);
+   
+   switch(*direction)
+   {
+   case 0x00://free running
+   break;
+   case 0x01://go forwards
+      switch(*stepPosition)
+      {
+      case 0x08:
+         *stepPosition = 0x04;
+         PORTA = 0x04;
+      break;
+      case 0x04:
+         *stepPosition = 0x02;
+         PORTA = 0x02;
+      break;
+      case 0x02:
+         *stepPosition = 0x01;
+         PORTA = 0x01;
+      break;
+      case 0x01:
+         *stepPosition = 0x08;
+         PORTA = 0x08;
+      break;
+      }
+   break;
+   case 0x02://go backwards
+      switch(*stepPosition)
+      {
+      case 0x08:
+         *stepPosition = 0x01;
+         PORTA = 0x01;
+      break;
+      case 0x04:
+         *stepPosition = 0x02;
+         PORTA = 0x02;
+      break;
+      case 0x02:
+         *stepPosition = 0x04;
+         PORTA = 0x04;
+      break;
+      case 0x01:
+         *stepPosition = 0x08;
+         PORTA = 0x08;
+      break;
+      }
+   break;
+   case 0x03://motor brake
+   break;
+   }
 return;
 }
-void halfStep(byte direction, byte stepPosition)
-{
 
+void halfStep(uint8_t *direction, uint8_t *stepPosition)
+{
+   
+return;
+}
+
+void getDirection(uint8_t *direction)
+{  
+   switch(PINA & 0x03)
+   {
+      case 0x00://free running
+         *direction = 0x00;
+         break;
+      case 0x01://forwards
+         *direction = 0x01;
+         break;
+      case 0x02://backwards
+         *direction = 0x02;
+         break;
+      case 0x03://brake
+         *direction = 0x03;
+         break;
+   }
 return;
 }
