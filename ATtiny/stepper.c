@@ -43,16 +43,15 @@
 
 void singleStep(uint8_t *direction, uint8_t *stepPosition);
 void halfStep(uint8_t *direction, uint8_t *stepPosition);
-void getDirection(uint8_t *direction);
+   void getDirection(uint8_t *direction);
 
 
 int main(void)
 {
    uint8_t stepPosition = 0x00;//the step that was made last.
    //stepPosition holds the current step phases for the motor
-   //       full steps    half steps
-   //      1122
-   //      ABAB
+   // n/a  1122
+   // n/a  ABAB
    // 0000 1000 = 0x08 - Full
    // 0000 1100 = 0x0c - Half
    // 0000 0100 = 0x04 - Full
@@ -130,7 +129,7 @@ return;
 
 void halfStep(uint8_t *direction, uint8_t *stepPosition)
 {
-   
+   getDirection(direction);
 return;
 }
 
