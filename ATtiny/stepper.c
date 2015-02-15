@@ -103,14 +103,14 @@ uint8_t getDirection(void)
 {
   switch(PINA & 0x30)//b00110000
   {
-    case 0x00://free running
-      return 0x00;
-    case 0x01://forwards
-      return 0x01;
-    case 0x02://backwards
-      return 0x02;
-    case 0x03://brake
-      return 0x03;
+  case 0x00://free running
+    return 0x00;
+  case 0x01://forwards
+    return 0x01;
+  case 0x02://backwards
+    return 0x02;
+  case 0x03://brake
+    return 0x03;
   }
 return 0x00;
 }
