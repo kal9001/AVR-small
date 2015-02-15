@@ -1,5 +1,5 @@
 /*\
- *   stepper - v1.0
+ *   stepper - v0.1
  *   Web: http://home.kal9001.co.uk  Email: kal@kal9001.co.uk
  *   
  *   Copyright (C) 2015  Kal9001
