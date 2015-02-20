@@ -18,3 +18,8 @@
  *   called GPLv3.txt in the root directory where this source file is located.
  *   If not, see <http://www.gnu.org/licenses/>.
 \*/
+
+//includes
+
+//function prototypes
+
