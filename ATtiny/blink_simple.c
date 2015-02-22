@@ -39,16 +39,16 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-void main(void)
+int main(void)
 {
-   DDRB = 0x01;
+  DDRB = 0x01;
    
-   while(1)
-   {
-	  PORTB = 0x00; //Port B all off
-		_delay_ms(1000); //delay one second
-		PORTB = 0x01; //Port B all on
-		_delay_ms(1000); //delay one second
-   }
-return(0);
+  while(1)
+  {
+  PORTB = 0x00; //Port B all off
+  _delay_ms(1000); //delay one second
+  PORTB = 0x01; //Port B all on
+  _delay_ms(1000); //delay one second
+  }
+return 0;
 }
