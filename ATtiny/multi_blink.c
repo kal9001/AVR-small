@@ -42,38 +42,38 @@
 
 int main(void)
 {                //_PB0, _PB1, _PB2, _PB3, _PB4
-   int pinOn[] =  { 250,   75, 1000,  100,   50}; // Select each pins 'on' time in miliseconds.
-   int pinOff[] = { 250,   75,  100, 1111,  500}; // Select each pins 'off' time in miliseconds.
-   int pinState[] = {0, 0, 0, 0, 0};
-   int pinTime[] = {0, 0, 0, 0, 0};
-   int i = 0;
-
-   DDRB = 0x1f;
-   while(1)
-   {
-      for(i = 0; i < 5; i++)
+  int pinOn[] =  { 250,   75, 1000,  100,   50}; // Select each pins 'on' time in miliseconds.
+  int pinOff[] = { 250,   75,  100, 1111,  500}; // Select each pins 'off' time in miliseconds.
+  int pinState[] = {0, 0, 0, 0, 0};
+  int pinTime[] = {0, 0, 0, 0, 0};
+  int i = 0;
+  
+  DDRB = 0x1f;
+  while(1)
+  {
+    for(i = 0; i < 5; i++)
+    {
+      if(pinTime[i] > 0)
       {
-         if(pinTime[i] > 0)
-         {
-            pinTime[i] = (pinTime[i] - 1);
-         }
-         else
-         {
-            if(pinState[i])
-            {
-               PORTB &= ~(1<<i);
-               pinState[i] = 0;
-               pinTime[i] = pinOff[i];
-            }
-            else
-            {
-               PORTB |= (1<<i);
-               pinState[i] = 1;
-               pinTime[i] = pinOn[i];
-            }
-         }
-      _delay_us(930); //wait 1 milisecond minus apx 70 microseconds to execute the loop
+        pinTime[i] = (pinTime[i] - 1);
       }
-   }
-   return(0);
+      else
+      {
+        if(pinState[i])
+        {
+          PORTB &= ~(1<<i);
+          pinState[i] = 0;
+          pinTime[i] = pinOff[i];
+        }
+        else
+        {
+          PORTB |= (1<<i);
+          pinState[i] = 1;
+          pinTime[i] = pinOn[i];
+        }
+      }
+    _delay_us(930); //wait 1 milisecond minus apx 70 microseconds to execute the loop
+    }
+  }
+return(0);
 } 
