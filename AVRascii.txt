@@ -1,4 +1,5 @@
 /*\
+ *   8k ROM, 512 EEPROM, 512 RAM, 20Mhz.
  *
  *               ATtiny85
  *               ╔═══╦═══╗
@@ -10,6 +11,7 @@
  *          
 \*/
 /*\
+ *   8k ROM, 512 EEPROM, 512 RAM, 20Mhz.
  *
  *               ATtiny84A
  *               ╔═══╦═══╗
@@ -24,6 +26,25 @@
  *
 \*/
 /*\
+ *   2k ROM, 128 EEPROM, 128 RAM, 20Mhz.
+ *
+ *               ATtiny2313
+ *               ╔═══╦═══╗
+ *    RESET/PA2 -║1    20║- VCC
+ *          PD0 -║2    19║- PB7/USCK
+ *          PD1 -║3    18║- PB6/MISO
+ *          PA1 -║4    17║- PB5/MOSI
+ *          PA0 -║5    16║- PB4
+ *          PD2 -║6    15║- PB3
+ *          PD3 -║7    14║- PB2
+ *          PD4 -║8    13║- PB1
+ *          PD5 -║9    12║- PB0
+ *          GND -║10   11║- PD6
+ *               ╚═══════╝
+ *
+\*/
+/*\
+ *   32k ROM, 1k EEPROM, 2k RAM, 20Mhz.
  *
  *               ATmega328P
  *               ╔═══╦═══╗
