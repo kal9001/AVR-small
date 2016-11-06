@@ -19,6 +19,24 @@
  *   If not, see <http://www.gnu.org/licenses/>.
 \*/
 
+/*\
+ *   Displays a given number on a 7-segment LED display. Number is input via serial interface.
+ *   
+ *   Pinout:
+ *
+ *           ATtiny84A
+ *           ╔═══╦═══╗
+ *   5v VCC -║1    14║- GND 0v
+ *   (O)PB0 -║2    13║- PA0(O)
+ *   (O)PB1 -║3    12║- PA1(O)
+ *    RESET -║4    11║- PA2(O)
+ *   (O)PB2 -║5    10║- PA3(O)
+ *   (O)PA7 -║6     9║- PA4(O)
+ *   (O)PA6 -║7     8║- PA5(O)
+ *           ╚═══════╝
+ *
+\*/
+
 //includes
 
 //function prototypes
