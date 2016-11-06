@@ -1,5 +1,5 @@
 /*\
- *   Multi_blink - v1.0
+ *   multiple_output_clock - v1.0
  *   Web: http://home.kal9001.co.uk  Email: kal@kal9001.co.uk
  *   
  *   Copyright (C) 2014  Kal9001
