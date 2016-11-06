@@ -1,8 +1,8 @@
 /*\
- *   7seg_serial - v0.1
+ *   multiple_7seg_serial - v0.1
  *   Web: http://home.kal9001.co.uk  Email: kal@kal9001.co.uk
  *   
- *   Copyright (C) 2015  Kal9001
+ *   Copyright (C) 2016  Kal9001
  *   
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,8 @@
 \*/
 
 /*\
- *   Displays a given number on a 7-segment LED display. Number is input via serial interface.
+ *   Displays a given number on a 7-segment LED display with upto 8 digits.
+ *   Number is input over serial interface by methods not yet currently implemented.
  *   
  *   Pinout:
  *
