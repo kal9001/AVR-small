@@ -4,12 +4,12 @@ This page contains various examples and experiments with the ATtiny Microcontrol
 
 Summery:-
 
-blink_simple - A simple LED flasher.
+single_output_clock - A simple clocked output.
 
-multi_blink - Each pin can be turned on and off independantly (hard coded at compile time).
+multiple_output_clock - Each pin can be turned on and off independantly (hard coded at compile time).
 
 stepper - Able to move a stepper motor forwards or backwards and change between full and half step mode.
 
-7seg - A simple 3 digit hex counter using a seven segment display.
+single_7seg_serial - A simple 3 digit hex counter using a seven segment display.
 
-7seg_serial - Upto eight digit output using two shift registers.
+multiple_7seg_serial - Upto eight digit output using two shift registers.
